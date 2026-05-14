@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -74,4 +75,327 @@
   </div>
 </div>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExamArchive | Past Papers for Students</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">↑</button>
+
+<!-- NAVBAR -->
+<header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#subjects" class="nav-link" data-section="subjects" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="#papers"   class="nav-link" data-section="papers"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="#marks"    class="nav-link" data-section="marks"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="#upload"   class="nav-link" data-section="upload"   onclick="showPage('home')">Upload</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#subjects" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="#papers"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="#marks"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="#upload"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+
+  <section class="hero" id="home">
+    <div class="hero-glow"></div><div class="hero-glow2"></div>
+    <div class="badge">Free for all students &amp; teachers</div>
+    <h1>Revise Smarter.<br><em>Ace Every Exam.</em></h1>
+    <p>Access thousands of past papers &amp; mark schemes for Multimedia Programming, Networking, and Software Development.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="goTo('papers')">Browse Papers</button>
+      <button class="btn-outline" onclick="goTo('upload')">Upload a Paper</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" data-target="2400">0</div><div class="stat-label">Past Papers</div></div>
+      <div class="stat"><div class="stat-num" data-target="3">0</div><div class="stat-label">Subjects</div></div>
+      <div class="stat"><div class="stat-num" data-target="12000">0</div><div class="stat-label">Students</div></div>
+      <div class="stat"><div class="stat-num" data-target="98">0</div><div class="stat-label">Pass Rate</div></div>
+    </div>
+  </section>
+
+  <div class="search-section">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by subject, year, or topic...">
+      <button onclick="doSearch()">Search</button>
+    </div>
+  </div>
+
+  <section class="subjects-section" id="subjects">
+    <div class="section-label">Subjects</div>
+    <h2 class="section-title">Choose Your Subject</h2>
+    <p class="section-sub">Click a subject card to explore papers, mark schemes, topics &amp; full syllabus.</p>
+    <div class="subjects-grid">
+      <div class="subject-card mm" onclick="openSubjectPage('mm')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('mm')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">🎨</div>
+          <h3>Multimedia Programming</h3>
+          <p>Graphics, animation, audio/video processing, interactive media, and multimedia application development.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>780</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card net" onclick="openSubjectPage('net')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('net')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">🌐</div>
+          <h3>Networking</h3>
+          <p>TCP/IP, network protocols, LAN/WAN, cybersecurity, routing, switching, and cloud infrastructure.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>910</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card sd" onclick="openSubjectPage('sd')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('sd')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">💻</div>
+          <h3>Software Development</h3>
+          <p>Algorithms, data structures, OOP, software engineering, testing, version control, and system design.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>730</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="papers-section" id="papers">
+    <div class="papers-inner">
+      <div class="papers-header">
+        <div>
+          <div class="section-label">Past Papers</div>
+          <h2 class="section-title">Recent Uploads</h2>
+        </div>
+        <div class="filters-wrap">
+          <div class="filters">
+            <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
+            <button class="filter-btn" onclick="setFilter(this,'Multimedia')">Multimedia</button>
+            <button class="filter-btn" onclick="setFilter(this,'Networking')">Networking</button>
+            <button class="filter-btn" onclick="setFilter(this,'Software')">Software Dev</button>
+          </div>
+          <div class="sort-wrap">
+            <select class="sort-select" id="sortSelect" onchange="applySortAndFilter()">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="papers-grid" id="papersGrid"></div>
+    </div>
+  </section>
+
+  <section class="marks-section" id="marks">
+    <div class="marks-header">
+      <div>
+        <div class="section-label">Mark Schemes</div>
+        <h2 class="section-title">Marking Schemes</h2>
+        <p class="section-sub" style="margin-bottom:0">Official mark schemes so you know exactly how examiners award marks — the secret to exam success.</p>
+      </div>
+    </div>
+    <div class="marks-tabs">
+      <button class="marks-tab active" onclick="setMarksFilter(this,'all')">All Subjects</button>
+      <button class="marks-tab" onclick="setMarksFilter(this,'Multimedia')">Multimedia</button>
+      <button class="marks-tab" onclick="setMarksFilter(this,'Networking')">Networking</button>
+      <button class="marks-tab" onclick="setMarksFilter(this,'Software')">Software Dev</button>
+    </div>
+    <div class="marks-grid" id="marksGrid"></div>
+  </section>
+
+  <section class="upload-section" id="upload">
+    <div class="upload-card">
+      <div class="section-label">For Teachers</div>
+      <h2 class="section-title">Upload a Document</h2>
+      <p class="section-sub">Share past papers or mark schemes. All uploads are reviewed within 24 hours.</p>
+      <div class="upload-type-tabs">
+        <button class="upload-type-tab active" onclick="setUploadType(this,'paper')">📄 Past Paper</button>
+        <button class="upload-type-tab" onclick="setUploadType(this,'marks')">✅ Mark Scheme</button>
+      </div>
+      <form id="uploadForm" onsubmit="submitPaper(event)">
+        <div class="form-grid">
+          <div class="form-group"><label>Document Title</label><input type="text" placeholder="e.g. Networking Final Exam 2024" required></div>
+          <div class="form-group"><label>Subject</label><select required><option value="">Select subject...</option><option>Multimedia Programming</option><option>Networking</option><option>Software Development</option></select></div>
+          <div class="form-group"><label>Year</label><input type="number" placeholder="e.g. 2024" min="2000" max="2026" required></div>
+          <div class="form-group"><label>Exam Level</label><select required><option value="">Select level...</option><option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Final Year</option></select></div>
+          <div class="form-group form-full"><label>Description (optional)</label><textarea placeholder="Topics covered, examiner notes, marking guidance..."></textarea></div>
+          <div class="form-group drop-zone form-full" onclick="document.getElementById('fileInput').click()">
+            <div class="drop-icon">📎</div>
+            <div class="drop-text"><strong>Click to upload</strong> or drag &amp; drop<br>PDF, DOC, DOCX up to 20MB</div>
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx">
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Paper for Review</button>
+      </form>
+      <div id="successMsg">✅ Document submitted! Our team will review it within 24 hours.</div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="how-inner">
+      <div style="text-align:center">
+        <div class="section-label">Process</div>
+        <h2 class="section-title">How ExamArchive Works</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step"><div class="step-num">1</div><h4>Choose a Subject</h4><p>Pick Multimedia, Networking, or Software Development.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>Browse Papers</h4><p>Filter by year, level, or topic to find what you need.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>Get the Mark Scheme</h4><p>Download the official marking scheme alongside the paper.</p></div>
+        <div class="step"><div class="step-num">4</div><h4>Ace Your Exam</h4><p>Walk in confident and fully prepared.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div style="text-align:center">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Students &amp; Teachers Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"ExamArchive had every Networking paper I needed. I passed with distinction!"</p><div class="testi-author"><div class="testi-avatar av2">A</div><div><div class="testi-name">Amina K.</div><div class="testi-role">Networking Student</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Uploading papers for my Software Dev class takes under a minute. Students love it."</p><div class="testi-author"><div class="testi-avatar av3">J</div><div><div class="testi-name">James M.</div><div class="testi-role">Software Dev Lecturer</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"The Multimedia mark schemes changed how I study. I finally understand how marks are awarded."</p><div class="testi-author"><div class="testi-avatar av1">C</div><div><div class="testi-name">Claire N.</div><div class="testi-role">Multimedia Student</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I tell every student: go to ExamArchive. Search and filtering make it effortless."</p><div class="testi-author"><div class="testi-avatar av4">D</div><div><div class="testi-name">Dr. David O.</div><div class="testi-role">Head of IT Department</div></div></div></div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Built by Students,<br>For Students</h2>
+        <p>ExamArchive was born out of frustration — finding past papers scattered across the internet, behind paywalls, or simply unavailable. We built a single, free, beautifully organised platform so every student gets a fair shot at exam success.</p>
+        <p style="margin-top:16px">Teachers contribute papers. Students revise smarter. Everyone wins.</p>
+        <div class="about-badges">
+          <div class="about-badge">🎓 100% Free</div>
+          <div class="about-badge">📋 Verified Papers</div>
+          <div class="about-badge">⚡ Always Updated</div>
+          <div class="about-badge">🌍 Open to All</div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card-float">
+          <div class="acf-icon">📚</div>
+          <div class="acf-text">
+            <div class="acf-title">2,400+ Papers</div>
+            <div class="acf-sub">Across 3 subjects</div>
+          </div>
+        </div>
+        <div class="about-card-float" style="animation-delay:0.3s">
+          <div class="acf-icon">✅</div>
+          <div class="acf-text">
+            <div class="acf-title">Mark Schemes</div>
+            <div class="acf-sub">Official &amp; verified</div>
+          </div>
+        </div>
+        <div class="about-card-float" style="animation-delay:0.6s">
+          <div class="acf-icon">👩‍🎓</div>
+          <div class="acf-text">
+            <div class="acf-title">12,000+ Students</div>
+            <div class="acf-sub">Already revising</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Exam<span>Archive</span></div>
+      <ul class="footer-links">
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#papers">Papers</a></li>
+        <li><a href="#marks">Mark Schemes</a></li>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 ExamArchive. Built to help every student succeed.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- SUBJECT PAGE -->
+<div id="page-subject" class="page">
+  <div class="subj-page" id="subjPageContent"></div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Exam<span>Archive</span></div>
+      <p class="footer-copy">© 2026 ExamArchive. Built to help every student succeed.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- 404 PAGE -->
+<div id="page-404" class="page">
+  <div class="not-found">
+    <div class="nf-glow"></div>
+    <div class="nf-code">404</div>
+    <div class="nf-emoji">📭</div>
+    <h2>Page Not Found</h2>
+    <p>Looks like this page went missing before the exam. Let's get you back on track.</p>
+    <button class="btn-primary" onclick="showPage('home')" style="padding:14px 32px;font-size:16px;border-radius:12px">← Back to Home</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle">Welcome Back</h3>
+    <p id="modalDesc">Sign in to access your saved papers and downloads.</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tabLogin" onclick="switchTab('login')">Log In</button>
+      <button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</button>
+    </div>
+    <div class="form-group" style="margin-bottom:14px"><label>EMAIL ADDRESS</label><input type="email" placeholder="you@example.com"></div>
+    <div class="form-group" style="margin-bottom:20px"><label>PASSWORD</label><input type="password" placeholder="••••••••"></div>
+    <button class="submit-btn" onclick="closeModal()" style="margin-top:0">Continue</button>
+  </div>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+>>>>>>> de1e85d20acb6ef04f815b889146d39411a63415
 </html>
