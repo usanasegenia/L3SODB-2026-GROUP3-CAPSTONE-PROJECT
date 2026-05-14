@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="app.js"></script>
+        <header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html" onclick="showPage('home')">Home</a></li>
+      <li><a href="subjects.html" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="papers.html"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="markscheme.html"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="upload.html"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="about.html"   onclick="showPage('home')">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="subjects.html" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="papers.html"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="markscheme.html"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="upload.html"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+  <a href="about.html"   onclick="showPage('home');toggleMobileNav()">About</a>
+</div>
+
+  <section class="how-section">
+    <div class="how-inner">
+      <div style="text-align:center">
+        <div class="section-label">Process</div>
+        <h2 class="section-title">How ExamArchive Works</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step"><div class="step-num">1</div><h4>Choose a Subject</h4><p>Pick Multimedia, Networking, or Software Development.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>Browse Papers</h4><p>Filter by year, level, or topic to find what you need.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>Get the Mark Scheme</h4><p>Download the official marking scheme alongside the paper.</p></div>
+        <div class="step"><div class="step-num">4</div><h4>Ace Your Exam</h4><p>Walk in confident and fully prepared.</p></div>
+      </div>
+    </div>
+  </section>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+         <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="app.js"></script>
+        <header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html" onclick="showPage('home')">Home</a></li>
+      <li><a href="subjects.html" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="papers.html"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="markscheme.html"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="upload.html"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="about.html"   onclick="showPage('home')">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="home.html" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="subjects.html" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="papers.html"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="markscheme.html"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="upload.html"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+   <a href="about.html"   onclick="showPage('home');toggleMobileNav()">About</a>
+</div>
+ <section class="subjects-section" id="subjects">
+    <div class="section-label">Subjects</div>
+    <h2 class="section-title">Choose Your Subject</h2>
+    <p class="section-sub">Click a subject card to explore papers, mark schemes, topics &amp; full syllabus.</p>
+    <div class="subjects-grid">
+      <div class="subject-card mm" onclick="openSubjectPage('mm')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">🎨</div>
+          <h3>Multimedia Programming</h3>
+          <p>Graphics, animation, audio/video processing, interactive media, and multimedia application development.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>780</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card net" onclick="openSubjectPage('net')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">🌐</div>
+          <h3>Networking</h3>
+          <p>TCP/IP, network protocols, LAN/WAN, cybersecurity, routing, switching, and cloud infrastructure.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>910</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card sd" onclick="openSubjectPage('sd')">
+        <div class="subject-top"></div>
+        <div class="subject-body">
+          <div class="subject-icon">💻</div>
+          <h3>Software Development</h3>
+          <p>Algorithms, data structures, OOP, software engineering, testing, version control, and system design.</p>
+          <div class="subject-meta">
+            <div class="subject-count">📄 <strong>730</strong> papers</div>
+            <button class="subject-btn">Explore →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </body>
+ </html>

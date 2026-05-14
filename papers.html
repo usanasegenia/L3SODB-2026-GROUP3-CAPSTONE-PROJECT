@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="app.js"></script>
+        <header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html" onclick="showPage('home')">Home</a></li>
+      <li><a href="subjects.html" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="papers.html"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="markscheme.html"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="upload.html"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="about.html"   onclick="showPage('home')">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="home.html" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="subjects.html" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="papers.html"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="markscheme.html"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="upload.html"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+   <a href="about.html"   onclick="showPage('home');toggleMobileNav()">About</a>
+</div>
+<section class="papers-section" id="papers">
+    <div class="papers-inner">
+      <div class="papers-header">
+        <div>
+          <div class="section-label">Past Papers</div>
+          <h2 class="section-title">Recent Uploads</h2>
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
+          <button class="filter-btn" onclick="setFilter(this,'Multimedia')">Multimedia</button>
+          <button class="filter-btn" onclick="setFilter(this,'Networking')">Networking</button>
+          <button class="filter-btn" onclick="setFilter(this,'Software')">Software Dev</button>
+        </div>
+      </div>
+      <div class="papers-grid" id="papersGrid"></div>
+    </div>
+  </section>
+  </body>
+  </html>

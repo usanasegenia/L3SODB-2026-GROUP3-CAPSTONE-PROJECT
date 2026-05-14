@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="app.js"></script>
+
+<header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html" onclick="showPage('home')">Home</a></li>
+      <li><a href="subjects.html" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="papers.html"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="markscheme.html"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="upload.html"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="about.html"   onclick="showPage('home')">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </nav>
+</header>
+<div class="mobile-nav" id="mobileNav">
+    <a href="home.html" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="subjects.html" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="papers.html"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="markscheme.html"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="upload.html"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+   <a href="about.html"   onclick="showPage('home');toggleMobileNav()">About</a>
+</div>
+        <div id="page-home" class="page active">
+
+  <section class="hero" id="home">
+    <div class="hero-glow"></div><div class="hero-glow2"></div>
+    <div class="badge">Free for all students &amp; teachers</div>
+    <h1>Revise Smarter.<br><em>Ace Every Exam.</em></h1>
+    <p>Access thousands of past papers &amp; mark schemes for Multimedia Programming, Networking, and Software Development.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="goTo('papers')">Browse Papers</button>
+      <button class="btn-outline" onclick="goTo('upload')">Upload a Paper</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">2,400+</div><div class="stat-label">Past Papers</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Subjects</div></div>
+      <div class="stat"><div class="stat-num">12K+</div><div class="stat-label">Students</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Pass Rate</div></div>
+    </div>
+  </section>
+
+  <div class="search-section">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by subject, year, or topic...">
+      <button onclick="doSearch()">Search</button>
+    </div>
+  </div>
+
+  <section class="testimonials-section">
+    <div style="text-align:center">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Students &amp; Teachers Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"ExamArchive had every Networking paper I needed. I passed with distinction!"</p><div class="testi-author"><div class="testi-avatar av2">A</div><div><div class="testi-name">Amina K.</div><div class="testi-role">Networking Student</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Uploading papers for my Software Dev class takes under a minute. Students love it."</p><div class="testi-author"><div class="testi-avatar av3">J</div><div><div class="testi-name">James M.</div><div class="testi-role">Software Dev Lecturer</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"The Multimedia mark schemes changed how I study. I finally understand how marks are awarded."</p><div class="testi-author"><div class="testi-avatar av1">C</div><div><div class="testi-name">Claire N.</div><div class="testi-role">Multimedia Student</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I tell every student: go to ExamArchive. Search and filtering make it effortless."</p><div class="testi-author"><div class="testi-avatar av4">D</div><div><div class="testi-name">Dr. David O.</div><div class="testi-role">Head of IT Department</div></div></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Exam<span>Archive</span></div>
+      <ul class="footer-links">
+        <li><a href="#subjects">Subjects</a></li><li><a href="#papers">Papers</a></li>
+        <li><a href="#marks">Mark Schemes</a></li><li><a href="#upload">Upload</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 ExamArchive. Built to help every student succeed.</p>
+    </div>
+  </footer>
+</div><!-- /page-home -->
+    </body>
+</html>

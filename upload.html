@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script src="app.js"></script>
+        <header>
+  <nav>
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon">📚</div>Exam<span>Archive</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html" onclick="showPage('home')">Home</a></li>
+      <li><a href="subjects.html" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="papers.html"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="markscheme.html"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="upload.html"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="about.html"   onclick="showPage('home')">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="t-icon moon">🌙</span>
+        <span class="t-icon sun">☀️</span>
+      </button>
+      <button class="btn-outline" onclick="openModal('login')">Log In</button>
+      <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="home.html" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="subjects.html" onclick="showPage('home');toggleMobileNav()">Subjects</a>
+  <a href="papers.html"   onclick="showPage('home');toggleMobileNav()">Papers</a>
+  <a href="markscheme.html"    onclick="showPage('home');toggleMobileNav()">Mark Schemes</a>
+  <a href="upload.html"   onclick="showPage('home');toggleMobileNav()">Upload</a>
+   <a href="about.html"   onclick="showPage('home');toggleMobileNav()">About</a>
+</div>
+
+<section class="upload-section" id="upload">
+    <div class="upload-card">
+      <div class="section-label">For Teachers</div>
+      <h2 class="section-title">Upload a Document</h2>
+      <p class="section-sub">Share past papers or mark schemes. All uploads are reviewed within 24 hours.</p>
+      <div class="upload-type-tabs">
+        <button class="upload-type-tab active" onclick="setUploadType(this,'paper')">📄 Past Paper</button>
+        <button class="upload-type-tab" onclick="setUploadType(this,'marks')">✅ Mark Scheme</button>
+      </div>
+      <form id="uploadForm" onsubmit="submitPaper(event)">
+        <div class="form-grid">
+          <div class="form-group"><label>Document Title</label><input type="text" placeholder="e.g. Networking Final Exam 2024" required></div>
+          <div class="form-group"><label>Subject</label><select required><option value="">Select subject...</option><option>Multimedia Programming</option><option>Networking</option><option>Software Development</option></select></div>
+          <div class="form-group"><label>Year</label><input type="number" placeholder="e.g. 2024" min="2000" max="2026" required></div>
+          <div class="form-group"><label>Exam Level</label><select required><option value="">Select level...</option><option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Final Year</option></select></div>
+          <div class="form-group form-full"><label>Description (optional)</label><textarea placeholder="Topics covered, examiner notes, marking guidance..."></textarea></div>
+          <div class="form-group drop-zone form-full" onclick="document.getElementById('fileInput').click()">
+            <div class="drop-icon">📎</div>
+            <div class="drop-text"><strong>Click to upload</strong> or drag &amp; drop<br>PDF, DOC, DOCX up to 20MB</div>
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx">
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Paper for Review</button>
+      </form>
+      <div id="successMsg">✅ Document submitted! Our team will review it within 24 hours.</div>
+    </div>
+</section>
+</body>
+</html>
