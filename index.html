@@ -6,12 +6,18 @@
   <title>ExamArchive | Past Papers for Students</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script src="app.js"></script>
+
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">↑</button>
+
 <!-- NAVBAR -->
 <header>
   <nav>
@@ -19,10 +25,10 @@
       <div class="logo-icon">📚</div>Exam<span>Archive</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#subjects" onclick="showPage('home')">Subjects</a></li>
-      <li><a href="#papers"   onclick="showPage('home')">Papers</a></li>
-      <li><a href="#marks"    onclick="showPage('home')">Mark Schemes</a></li>
-      <li><a href="#upload"   onclick="showPage('home')">Upload</a></li>
+      <li><a href="#subjects" class="nav-link" data-section="subjects" onclick="showPage('home')">Subjects</a></li>
+      <li><a href="#papers"   class="nav-link" data-section="papers"   onclick="showPage('home')">Papers</a></li>
+      <li><a href="#marks"    class="nav-link" data-section="marks"    onclick="showPage('home')">Mark Schemes</a></li>
+      <li><a href="#upload"   class="nav-link" data-section="upload"   onclick="showPage('home')">Upload</a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
@@ -32,7 +38,9 @@
       <button class="btn-outline" onclick="openModal('login')">Log In</button>
       <button class="btn-primary" onclick="openModal('signup')">Sign Up Free</button>
     </div>
-    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
 
@@ -43,7 +51,7 @@
   <a href="#upload"   onclick="showPage('home');toggleMobileNav()">Upload</a>
 </div>
 
-<!-- ═══ HOME PAGE ═══ -->
+<!-- HOME PAGE -->
 <div id="page-home" class="page active">
 
   <section class="hero" id="home">
@@ -56,10 +64,10 @@
       <button class="btn-outline" onclick="goTo('upload')">Upload a Paper</button>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">2,400+</div><div class="stat-label">Past Papers</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Subjects</div></div>
-      <div class="stat"><div class="stat-num">12K+</div><div class="stat-label">Students</div></div>
-      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Pass Rate</div></div>
+      <div class="stat"><div class="stat-num" data-target="2400">0</div><div class="stat-label">Past Papers</div></div>
+      <div class="stat"><div class="stat-num" data-target="3">0</div><div class="stat-label">Subjects</div></div>
+      <div class="stat"><div class="stat-num" data-target="12000">0</div><div class="stat-label">Students</div></div>
+      <div class="stat"><div class="stat-num" data-target="98">0</div><div class="stat-label">Pass Rate</div></div>
     </div>
   </section>
 
@@ -75,7 +83,7 @@
     <h2 class="section-title">Choose Your Subject</h2>
     <p class="section-sub">Click a subject card to explore papers, mark schemes, topics &amp; full syllabus.</p>
     <div class="subjects-grid">
-      <div class="subject-card mm" onclick="openSubjectPage('mm')">
+      <div class="subject-card mm" onclick="openSubjectPage('mm')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('mm')">
         <div class="subject-top"></div>
         <div class="subject-body">
           <div class="subject-icon">🎨</div>
@@ -87,7 +95,7 @@
           </div>
         </div>
       </div>
-      <div class="subject-card net" onclick="openSubjectPage('net')">
+      <div class="subject-card net" onclick="openSubjectPage('net')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('net')">
         <div class="subject-top"></div>
         <div class="subject-body">
           <div class="subject-icon">🌐</div>
@@ -99,7 +107,7 @@
           </div>
         </div>
       </div>
-      <div class="subject-card sd" onclick="openSubjectPage('sd')">
+      <div class="subject-card sd" onclick="openSubjectPage('sd')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openSubjectPage('sd')">
         <div class="subject-top"></div>
         <div class="subject-body">
           <div class="subject-icon">💻</div>
@@ -121,18 +129,27 @@
           <div class="section-label">Past Papers</div>
           <h2 class="section-title">Recent Uploads</h2>
         </div>
-        <div class="filters">
-          <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
-          <button class="filter-btn" onclick="setFilter(this,'Multimedia')">Multimedia</button>
-          <button class="filter-btn" onclick="setFilter(this,'Networking')">Networking</button>
-          <button class="filter-btn" onclick="setFilter(this,'Software')">Software Dev</button>
+        <div class="filters-wrap">
+          <div class="filters">
+            <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
+            <button class="filter-btn" onclick="setFilter(this,'Multimedia')">Multimedia</button>
+            <button class="filter-btn" onclick="setFilter(this,'Networking')">Networking</button>
+            <button class="filter-btn" onclick="setFilter(this,'Software')">Software Dev</button>
+          </div>
+          <div class="sort-wrap">
+            <select class="sort-select" id="sortSelect" onchange="applySortAndFilter()">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="papers-grid" id="papersGrid"></div>
     </div>
   </section>
 
-  <!-- MARK SCHEMES SECTION -->
   <section class="marks-section" id="marks">
     <div class="marks-header">
       <div>
@@ -206,19 +223,62 @@
     </div>
   </section>
 
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Built by Students,<br>For Students</h2>
+        <p>ExamArchive was born out of frustration — finding past papers scattered across the internet, behind paywalls, or simply unavailable. We built a single, free, beautifully organised platform so every student gets a fair shot at exam success.</p>
+        <p style="margin-top:16px">Teachers contribute papers. Students revise smarter. Everyone wins.</p>
+        <div class="about-badges">
+          <div class="about-badge">🎓 100% Free</div>
+          <div class="about-badge">📋 Verified Papers</div>
+          <div class="about-badge">⚡ Always Updated</div>
+          <div class="about-badge">🌍 Open to All</div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card-float">
+          <div class="acf-icon">📚</div>
+          <div class="acf-text">
+            <div class="acf-title">2,400+ Papers</div>
+            <div class="acf-sub">Across 3 subjects</div>
+          </div>
+        </div>
+        <div class="about-card-float" style="animation-delay:0.3s">
+          <div class="acf-icon">✅</div>
+          <div class="acf-text">
+            <div class="acf-title">Mark Schemes</div>
+            <div class="acf-sub">Official &amp; verified</div>
+          </div>
+        </div>
+        <div class="about-card-float" style="animation-delay:0.6s">
+          <div class="acf-icon">👩‍🎓</div>
+          <div class="acf-text">
+            <div class="acf-title">12,000+ Students</div>
+            <div class="acf-sub">Already revising</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">Exam<span>Archive</span></div>
       <ul class="footer-links">
-        <li><a href="#subjects">Subjects</a></li><li><a href="#papers">Papers</a></li>
-        <li><a href="#marks">Mark Schemes</a></li><li><a href="#upload">Upload</a></li>
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#papers">Papers</a></li>
+        <li><a href="#marks">Mark Schemes</a></li>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
       <p class="footer-copy">© 2026 ExamArchive. Built to help every student succeed.</p>
     </div>
   </footer>
-</div><!-- /page-home -->
+</div>
 
-<!-- ═══ SUBJECT PAGE ═══ -->
+<!-- SUBJECT PAGE -->
 <div id="page-subject" class="page">
   <div class="subj-page" id="subjPageContent"></div>
   <footer>
@@ -227,6 +287,18 @@
       <p class="footer-copy">© 2026 ExamArchive. Built to help every student succeed.</p>
     </div>
   </footer>
+</div>
+
+<!-- 404 PAGE -->
+<div id="page-404" class="page">
+  <div class="not-found">
+    <div class="nf-glow"></div>
+    <div class="nf-code">404</div>
+    <div class="nf-emoji">📭</div>
+    <h2>Page Not Found</h2>
+    <p>Looks like this page went missing before the exam. Let's get you back on track.</p>
+    <button class="btn-primary" onclick="showPage('home')" style="padding:14px 32px;font-size:16px;border-radius:12px">← Back to Home</button>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -244,5 +316,7 @@
     <button class="submit-btn" onclick="closeModal()" style="margin-top:0">Continue</button>
   </div>
 </div>
+
+<script src="app.js" defer></script>
 </body>
 </html>
